@@ -1,0 +1,125 @@
+:root{
+    /* background:rgb(100, 200, 250) /
+}
+body{
+    / background: #2260BF /
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    justify-content:space-around;
+    background: #00af43;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+.header-left{
+background-color: rgb(221, 255, 0);
+}
+.header-right{
+    / background-color: #2260BF; */
+}
+
+.lists{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    justify-content:space-around;
+    background: #2260BF;
+    padding: 2rem;
+    margin-top: 1rem;
+    list-style: none;
+}
+ li a{
+    text-decoration: none;
+    color: rgb(248, 248, 248);
+ }
+ .subheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+ .rightbuttons{
+    background-color: brown;
+    padding: 20px;
+
+ }
+ .navlinks{
+    width: 80%;
+ }
+
+ .btn1{
+    background-color: #FF6B6B;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+ }
+ .btn1:hover{
+    background-color: rgb(16, 255, 52);
+    color: black;
+    padding: 30px;
+    border-radius: 20px;
+ }
+ .btn1 button{
+    
+ }
+ .bar{
+    width: 20px;
+    height: 10px;
+    background-color: black;
+ }
+ .l-leftpart{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+ }
+ .l-leftpart img{
+    width: 200px;
+    height: 50px;
+ }
+ .lheader{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+ .resultbtn{
+    background-color: transparent;
+    border: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    padding: 12px;
+    text-decoration: underline;
+    border-color: rgb(141, 141, 141);
+    cursor: pointer;
+ }
+ .resultbtn:hover{
+  border-color: rgb(86, 86, 86);
+
+ }
+ .live-left{
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+ }
+ .live-right{
+    background-color: violet;
+ }
+ .liverepre{
+    display: flex;
+ }
+ .boxes{
+    display: flex;
+ }
+ .llll{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+ }
+ .rrrr{
+    background-color: #00af43;
+     width: 20px;
+    height: 20px;
+ }

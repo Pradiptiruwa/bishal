@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Bishal!</title>
+    <style>
+        /* --- General Page Styles --- */
+        body {
+            background-color: #1a1a2e; /* Dark, celebratory theme */
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #f39c12, #d35400);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ecf0f1;
+            margin-top: 0;
+            font-weight: 300;
+        }
+
+        p.wish {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #bdc3c7;
+        }
+
+        /* --- Photo Gallery --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; /* Keeps square aspect ratio */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: #f39c12;
+            cursor: pointer;
+        }
+
+        .gallery-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Special style for the first photo */
+        .gallery-item.main {
+            grid-column: span 2;
+            padding-bottom: 75%; /* Landscape aspect */
+        }
+
+        /* --- Interactive Cake & Candles --- */
+        .cake-container {
+            position: relative;
+            margin: 40px 0;
+            width: 250px;
+            height: 250px;
+            display: inline-block;
+        }
+
+        .cake-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* Use a placeholder image for the cake */
+        .cake-img[src=""] {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #63390c, #8e44ad); /* Cake colors */
+            border-radius: 10px;
+            bottom: 20px;
+        }
+
+        .candles-group {
+            position: absolute;
+            bottom: 110px; /* Position on top of the cake */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .candle {
+            width: 10px;
+            height: 60px;
+            background: linear-gradient(to top, #fff, #f1c40f); /* Candle colors */
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .flame {
+            width: 12px;
+            height: 20px;
+            background-color: #e67e22; /* Inner flame */
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -22px;
+            left: -1px;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 0 10px #f39c12;
+            animation: flicker 0.1s infinite alternate;
+        }
+
+        /* Candle Lit State */
+        .candle.lit .flame {
+            opacity: 1;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* --- Buttons --- */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .btn-surprise {
+            background: linear-gradient(to right, #ec4899, #f43f5e);
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
+        }
+
+        .btn-surprise:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.6);
+        }
+
+        .btn-water {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-water:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+        }
+
+        .btn-water.active {
+            background: #e74c3c;
+            animation: pulse-red 1s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 5px #e74c3c; }
+            50% { box-shadow: 0 0 20px #e74c3c; }
+            100% { box-shadow: 0 0 5px #e74c3c; }
+        }
+
+        /* --- Confetti --- */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f472b6;
+            top: -10px;
+            animation: fall linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy Birthday, Bishal!</h1>
+        <h2>Wish You happy return of the day</h2>
+        <h2>PARTY</h2>
+
+        <div class="gallery">
+            <div class="gallery-item main">
+                <img src="1.jpeg" alt="Bishal Selfie" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="2.jpeg" alt="Morgan College ID" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="3.jpeg" alt="Bishal Professional" class="gallery-img">
+            </div>
+            <div class="gallery-item">
+                <img src="4.jpeg" alt="Bishal Smile" class="gallery-img">
+            </div>
+        </div>
+
+        <p>timro photo khojeko paayena tesaile maile ID card, Entry card haru ko photo crop garera haaleko chhu malai bholi delete gara bhanera nabhana </p>
+
+        <p class="wish">
+Padhai ma dherai pragati hos, exam chaldai chha raamro sanga padne raamro sanga exam dine dherai girlfriend banayera nahidne girlfriend banayera hidyo bhane timi phaschhau. Life ma kahilei pani dukha nahos,ani malai sadhai Dai bhanera bolaune maile bhaneko maanne ani mero mobile laptop haru nachalaaune🥂📖"        </p>
+
+<h1>HAPPY BIRTHDAY! </h1>
+<P>Talako candle click gara tara candle click hudaina</P>
+        <p style="color: #f1c40f; font-weight: bold; margin-bottom: 5px;"></p>
+        <p style="color: #ecf0f1; font-size: 0.9rem; margin-top: 0; font-style: italic;"></p>
+
+        <div class="cake-container">
+            <div class="cake-img"></div>
+            
+            <div class="candles-group">
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                </div>
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+<h3>Please click on the Surprise button</h3>
+        <div class="btn-group">
+            <button class="btn btn-water" id="waterBtn" onclick="activateWaterMode()">💧 WATER</button>
+            <button class="btn btn-surprise" onclick="releaseConfetti()">Surprise! 🎉</button>
+        </div>
+
+    </div>
+
+    <script>
+        let waterModeActive = false;
+
+        // Toggle candle flame on click
+        function toggleCandle(candleElement) {
+            // Check if water mode is active
+            if (waterModeActive) {
+                // Candle is lit and we have water, so extinguish it
+                if (candleElement.classList.contains('lit')) {
+                    candleElement.classList.remove('lit');
+                } else {
+                    alert("Aago chaina! Paile lighting garnuhos, pachi matra extinguishing.");
+                }
+                return; // Exit function after extinguishing attempt
+            }
+
+            // Normal mode: Light the candle
+            candleElement.classList.toggle('lit');
+            if (candleElement.classList.contains('lit')) {
+                // If now lit, make a sound or effect here if desired.
+            }
+        }
+
+        // Activate Water Mode for extinguishing candles
+        function activateWaterMode() {
+            waterModeActive = !waterModeActive; // Toggle state
+            const waterBtn = document.getElementById('waterBtn');
+            
+            if (waterModeActive) {
+                waterBtn.textContent = "DRY 💧"; // Change button text
+                waterBtn.classList.add('active'); // Add pulsing style
+                alert("Extinguishing Mode Active! Tapai ko special wish finish bhayo bhane, lit bhayeko candle click garera extinguish garnuhos.");
+            } else {
+                waterBtn.textContent = "WATER 💧"; // Change button text back
+                waterBtn.classList.remove('active'); // Remove pulsing style
+                alert("Extinguishing Mode Deactivated.");
+            }
+        }
+
+        // Release Confetti Surprise
+        function releaseConfetti() {
+            for (let i = 0; i < 70; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.backgroundColor = ['#f472b6', '#fb923c', '#60a5fa', '#34d399'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(confetti);
+                
+                // Clean up elements after animation
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Add lighting effect to the whole page on lit candle
+        function updatePageLighting() {
+            const litCandles = document.querySelectorAll('.candle.lit').length;
+            const container = document.querySelector('.container');
+            if (litCandles > 0) {
+                container.style.boxShadow = `0 20px 60px rgba(243, 156, 18, ${0.3 + litCandles * 0.1})`;
+                document.body.style.backgroundColor = `#2c1a0a`; // Warmer tone when lit
+            } else {
+                container.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
+                document.body.style.backgroundColor = `#1a1a2e`; // Default back
+            }
+        }
+
+        // Connect the lighting effect to the toggle function
+        function toggleCandleWithLighting(candleElement) {
+            toggleCandle(candleElement);
+            updatePageLighting();
+        }
+
+        // Override the initial toggle function
+        window.toggleCandle = toggleCandleWithLighting;
+
+    </script>
+</body>
+</html>

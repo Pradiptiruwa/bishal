@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.scrollcontainer{
+    display: flex;
+    align-items: center ;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: 100px;
+    padding: 20px;
+    margin-bottom: 100px;
+    width: 80vw;
+    justify-self: center;
+    
+}
+.trendingtext{
+    background-color: #1585f8; ;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px 0px 0px 12px;
+    position: relative;
+    z-index: 1;
+    /* flex-shrink: 0; */
+    
+}
+.scrollsection{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    animation-name: scrolling;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+}
+.liveshow{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF5D0;
+    padding: 12px;
+    border-radius: 12px 12px 12px 12px;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    /* flex-shrink: 0; */
+}
+@keyframes scrolling {
+    0%{
+        transform: translateX(100%);
+
+
+    }
+    100%{
+        transform: translateX(-100%);
+
+    }
+}
+.scrollwraper{
+    flex-grow: 1;
+    overflow: hidden;
+}
